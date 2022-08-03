@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Litesphere Voltage Drop Calculator</title>
+
+    <link rel="stylesheet" type="text/css" href="catalog.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body
+        {   font-family: 'Poppins', sans-serif;
+            background-image: url(bg5.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .body {
+            padding-top: 2vw;
+            margin-left: 20vw;
+        }
+
+        img {
+            margin-left: 0;
+        }
+
+.button-40 {
+  background-color: #111827;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+}
+
+.button-40:hover {
+  background-color: #374151;
+}
+
+.button-40:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .button-40 {
+    padding: .75rem 1.5rem;
+  }
+}
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <div class="body">
+
+        <img src="logo.png">
+        <h1>Flexile Max Lead Calculator</h1>
+        <p>This tool will calculate the max lead length based off the Flexile length.
+
+        </P>
+
+        <div id="calculator">
+
+            <form onsubmit="return false;">
+
+                Run Length (ft):<br>
+
+                <input type="double" name="rlength" id="rlength" placeholder="ft">
+
+                <br><br>
+
+                Lead Wire Gauge (AWG):<br>
+                <input type="radio" checked="checked" name="gauge" id="gauge" placeholder="20" value=10.15> 20
+
+                <br><br>
+
+
+                <button class="button-40" role="button" onclick="calculateVDrop()">Calculate</button>
+
+                <br>
+
+                <br>
+
+                <p id="result1"></p>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+
+
+    function calculateVDrop() {
+        let voltage = parseFloat(24);
+        let rlength = parseFloat(document.getElementById("rlength").value);
+        let gauge = parseFloat(10.15);
+        let amps1 = parseFloat((rlength * 4.5) / voltage);
+
+
+        // calculate vDrop
+        let maxLead = parseFloat(.72 / (amps1 * (2 * (gauge / 1000))));
+        $('#result1').text('Max lead is ' + maxLead.toFixed(2) + 'ft');
+
+    }
+
+
+</script>
+
+</html>
