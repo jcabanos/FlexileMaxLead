@@ -30,6 +30,9 @@
         img {
             margin-left: 0;
         }
+        input:invalid {
+     background-color: #ffdddd;
+    }
 
 .button-40 {
   background-color: #111827;
@@ -94,7 +97,7 @@
 
                 Run Length (ft):<br>
 
-                <input type="number" name="rlength" id="rlength" placeholder="ft" max="20">
+                <input type="number" step=".01" name="rlength" id="rlength" placeholder="ft" min="1" max="20" required>
 
                 <br><br>
 
