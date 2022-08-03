@@ -104,7 +104,7 @@
                 <br><br>
 
 
-                <button class="button-40" role="button" onclick="calculateVDrop()">Calculate</button>
+                <button class="button-40" role="button" onclick="calculateMaxLead()">Calculate</button>
 
                 <br>
 
@@ -122,14 +122,14 @@
 
 
 
-    function calculateVDrop() {
+    function calculateMaxLead() {
         let voltage = parseFloat(24);
         let rlength = parseFloat(document.getElementById("rlength").value);
         let gauge = parseFloat(10.15);
         let amps1 = parseFloat((rlength * 4.5) / voltage);
 
 
-        // calculate vDrop
+        // calculate max lead
         let maxLead = parseFloat(.72 / (amps1 * (2 * (gauge / 1000))));
         $('#result1').text('Max lead is ' + maxLead.toFixed(2) + 'ft');
 
